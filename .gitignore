@@ -361,3 +361,4 @@ MigrationBackup/
 /bin
 /*.config
 /App.config
+/obj
