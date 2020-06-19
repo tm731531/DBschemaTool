@@ -19,31 +19,33 @@ namespace DBschemaTool.Helper
 
         private static void CreateCsFileMSSQL(ICollection<string> sl, string v, string spname)
         {
-            var filePath = Path.Combine(Program.filePath, $"{v}/{spname}.cs");
-            if (!Directory.Exists($"{v}"))
-            {
-                Directory.CreateDirectory($"{v}");
-            }
+            var dicPath = Path.Combine(Program.filePath, $"{v}");
+            var filePath = Path.Combine(dicPath, $"{spname}.cs");
+            CheckDicExists(dicPath);
             FlashFile(sl, filePath);
+        }
+
+        private static void CheckDicExists(string dicPath)
+        {
+            if (!Directory.Exists($"{dicPath}"))
+            {
+                Directory.CreateDirectory($"{dicPath}");
+            }
         }
 
         private static void CreateCsFileInput(ICollection<string> sl, string spname)
         {
-            var filePath =Path.Combine(Program.filePath, $"Input/{spname}_Input.cs");
-            if (!Directory.Exists("Input"))
-            {
-                Directory.CreateDirectory("Input");
-            }
+            var dicPath = Path.Combine(Program.filePath, $"INPUT");
+            var filePath = Path.Combine(dicPath, $"{spname}.cs");
+            CheckDicExists(dicPath);
             FlashFile(sl, filePath);
         }
 
         private static void CreateCsFileOutput(ICollection<string> sl, string spname)
         {
-            var filePath = Path.Combine(Program.filePath, $"Output/{spname}_Output.cs");
-            if (!Directory.Exists("Output"))
-            {
-                Directory.CreateDirectory("Output");
-            }
+            var dicPath = Path.Combine(Program.filePath, $"OUTPUT");
+            var filePath = Path.Combine(dicPath, $"{spname}.cs");
+            CheckDicExists(dicPath);
             FlashFile(sl, filePath);
         }
 
