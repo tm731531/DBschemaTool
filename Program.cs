@@ -120,7 +120,7 @@ namespace DBschemaTool
             returnLs.Add("{");
             foreach (var t in data)
             {
-                var isNullable = t.Isnull == "NO" ? "" : "?";
+                var isNullable = ConvertTypeMSSQL(t.DATA_TYPE)!= "string"? t.Isnull == "NO" ? "" : "?":"";
                 AddSummary(returnLs, t);
                 AddColumn(returnLs, t);
                 AddMaxLength(returnLs, t);
